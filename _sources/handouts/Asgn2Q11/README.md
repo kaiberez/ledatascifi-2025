@@ -1,10 +1,10 @@
 A few students have issues with yfinance downloading data.
+There are two fixes. 
 
-Try this first:
-1. You can try in terminal: `pip install --upgrade pandas yfinance` . My code works with yfinance version 0.2.40 and 0.2.52 (latest). After that pip install, restart jupyter lab (close and reopen the terminal, and reopen the browser), try again.
-2. Some students get a "rate limit" error. Just pause and retry in a few minutes.
+(Fix 1) Use the code as I gave it to you in the assignment (only use the code inside the `else`), but fix it. Turns out, the fix is only 4 keystrokes, and is due to a change in how yfinance downloads data since the last iteration of this class. Some students have older versions of yfinance, where my assignment code works. Newer versions of yfinance seem to result in the error.
 
-If that fails, 
+(Fix 2)
+
 1. Put `stock_prices_AFTERWRANGLING.csv` (in this folder) into your assignment repository folder. (Don't gitignore it!)
 1. Then replace the 3 blocks of code I gave you in the assignment with this:
 
