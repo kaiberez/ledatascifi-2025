@@ -962,17 +962,11 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">openassetpricing</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">openap</span>
 
-<span class="c1"># -------------------- Helper Function --------------------</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">ensure_dir</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
-
 <span class="c1"># -------------------- Parameters --------------------</span>
 <span class="n">signallist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;IndIPO&#39;</span><span class="p">,</span><span class="s1">&#39;BM&#39;</span><span class="p">]</span>
-<span class="n">ensure_dir</span><span class="p">(</span><span class="s1">&#39;temp&#39;</span><span class="p">)</span>
 
 <span class="c1"># -------------------- Initialize OpenAP and Download Signal Doc --------------------</span>
-<span class="n">openap_obj</span> <span class="o">=</span> <span class="n">openap</span><span class="o">.</span><span class="n">OpenAP</span><span class="p">(</span><span class="mi">2022</span><span class="p">)</span>  <span class="c1"># using the latest release by default</span>
+<span class="n">openap_obj</span> <span class="o">=</span> <span class="n">openap</span><span class="o">.</span><span class="n">OpenAP</span><span class="p">()</span>  
 <span class="n">signaldoc</span> <span class="o">=</span> <span class="n">openap_obj</span><span class="o">.</span><span class="n">dl_signal_doc</span><span class="p">(</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Available signals:&quot;</span><span class="p">)</span>
@@ -1041,7 +1035,7 @@ const thebe_selector_output = ".output, .cell_output"
 8      BetaLiquidityPS            Pastor and Stambaugh   
 9         BetaTailRisk                 Kelly and Jiang   
 10             betaVIX                      Ang et al.   
-11                  BM   Rosenberg, Reid, and Lanstein   
+11                  BM                        Stattman   
 12               BMdec                 Fama and French   
 13        BookLeverage                 Fama and French   
 14               BPEBM     Penman, Richardson and Tuna   
@@ -1051,34 +1045,34 @@ const thebe_selector_output = ".output, .cell_output"
 18                  CF    Lakonishok, Shleifer, Vishny   
 19                 cfp  Desai, Rajgopal, Venkatachalam   
 
-                        LongDescription  
-0                     Abnormal Accruals  
-1                              Accruals  
-2           Book-to-market and accruals  
-3                Takeover vulnerability  
-4                Total assets to market  
-5                 EPS forecast revision  
-6          Earnings announcement return  
-7                          Asset growth  
-8       Pastor-Stambaugh liquidity beta  
-9                        Tail risk beta  
-10                Systematic volatility  
-11  Book to market using most recent ME  
-12     Book to market using December ME  
-13               Book leverage (annual)  
-14             Leverage component of BM  
-15                       Cash to assets  
-16                    Cash Productivity  
-17   Cash-based operating profitability  
-18                  Cash flow to market  
-19        Operating Cash flows to price  
+                             LongDescription  
+0                          Abnormal Accruals  
+1                                   Accruals  
+2                Book-to-market and accruals  
+3                     Takeover vulnerability  
+4                     Total assets to market  
+5                      EPS forecast revision  
+6               Earnings announcement return  
+7                               Asset growth  
+8            Pastor-Stambaugh liquidity beta  
+9                             Tail risk beta  
+10                     Systematic volatility  
+11  Book to market, original (Stattman 1980)  
+12          Book to market using December ME  
+13                    Book leverage (annual)  
+14                  Leverage component of BM  
+15                            Cash to assets  
+16                         Cash Productivity  
+17        Cash-based operating profitability  
+18                       Cash flow to market  
+19             Operating Cash flows to price  
 
-Data is downloaded: 6s
+Data is downloaded: 8s
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\DonsLaptop\AppData\Local\Temp\ipykernel_6536\2924589412.py:42: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\DonsLaptop\AppData\Local\Temp\ipykernel_14552\1088216037.py:36: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
   ff = pandas_datareader.get_data_famafrench(&#39;F-F_Research_Data_Factors&#39;,start=1950,end=2024)[0]
-C:\Users\DonsLaptop\AppData\Local\Temp\ipykernel_6536\2924589412.py:42: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+C:\Users\DonsLaptop\AppData\Local\Temp\ipykernel_14552\1088216037.py:36: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
   ff = pandas_datareader.get_data_famafrench(&#39;F-F_Research_Data_Factors&#39;,start=1950,end=2024)[0]
 </pre></div>
 </div>
@@ -1124,36 +1118,36 @@ C:\Users\DonsLaptop\AppData\Local\Temp\ipykernel_6536\2924589412.py:42: FutureWa
   <tbody>
     <tr>
       <th>BM</th>
-      <td>726.0</td>
-      <td>0.949682</td>
-      <td>-25.506774</td>
-      <td>-1.583586</td>
-      <td>0.596431</td>
-      <td>2.966628</td>
-      <td>40.550071</td>
-      <td>4.805902</td>
+      <td>870.0</td>
+      <td>0.674195</td>
+      <td>-16.609171</td>
+      <td>-1.605303</td>
+      <td>0.480837</td>
+      <td>2.524949</td>
+      <td>33.273039</td>
+      <td>4.122496</td>
     </tr>
     <tr>
       <th>IndIPO</th>
-      <td>560.0</td>
-      <td>0.457268</td>
-      <td>-18.936888</td>
-      <td>-1.083949</td>
-      <td>0.330338</td>
-      <td>2.049877</td>
-      <td>15.404419</td>
-      <td>3.410457</td>
+      <td>584.0</td>
+      <td>0.442920</td>
+      <td>-18.936894</td>
+      <td>-1.079318</td>
+      <td>0.351437</td>
+      <td>2.080434</td>
+      <td>15.404382</td>
+      <td>3.382486</td>
     </tr>
     <tr>
       <th>mkt_rf</th>
-      <td>726.0</td>
-      <td>0.581515</td>
+      <td>870.0</td>
+      <td>0.642598</td>
       <td>-23.240000</td>
-      <td>-1.960000</td>
-      <td>1.010000</td>
-      <td>3.400000</td>
+      <td>-1.940000</td>
+      <td>1.025000</td>
+      <td>3.422500</td>
       <td>16.100000</td>
-      <td>4.453374</td>
+      <td>4.357549</td>
     </tr>
   </tbody>
 </table>
