@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.3.6. Better Plots" href="04f1-viz_narrative.html" />
+    <link rel="next" title="3.3.6. Goodbye Scatterplot, Welcome Binned Scatterplot" href="04e3-binscatter.html" />
     <link rel="prev" title="3.3.4. Visual EDA Walkthrough" href="04e-visualEDA.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -455,18 +455,28 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="04e3-binscatter.html">
+       3.3.6. Bin Scatter Plots
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04e4-binscatterGrids.html">
+       3.3.7. Bin Scatter + Pair Plots
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="04f1-viz_narrative.html">
-       3.3.6. Better Plots
+       3.3.8. Better Plots
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="04f2-customizing_figs.html">
-       3.3.7. Customizing figures
+       3.3.9. Customizing figures
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="04f3-interactive_figs.html">
-       3.3.8. Interactive plots:
+       3.3.10. Interactive plots:
        <code class="docutils literal notranslate">
         <span class="pre">
          plotly
@@ -476,12 +486,12 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="04f4-exercises.html">
-       3.3.9. Exercises
+       3.3.11. Exercises
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="04h_Summary.html">
-       3.3.10. Chapter Summary
+       3.3.12. Chapter Summary
       </a>
      </li>
     </ul>
@@ -939,6 +949,25 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ydata-profiling">
+   3.3.5.1. Ydata-profiling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lux">
+   3.3.5.2. Lux
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -948,6 +977,23 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="section" id="visual-eda-tools">
 <h1><span class="section-number">3.3.5. </span>Visual EDA Tools<a class="headerlink" href="#visual-eda-tools" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ydata-profiling">
+<h2><span class="section-number">3.3.5.1. </span>Ydata-profiling<a class="headerlink" href="#ydata-profiling" title="Permalink to this headline">¶</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">(Partly) Automated Visual EDA via Ydata-profiling</p>
+<p>From <a class="reference external" href="https://docs.profiling.ydata.ai/latest/">their website</a>:</p>
+<blockquote>
+<div><p>ydata-profiling is a leading package for data profiling, that automates and standardizes the generation of detailed reports, complete with statistics and visualizations. The significance of the package lies in how it streamlines the process of understanding and preparing data for analysis in a single line of code! If you’re ready to get started see the quickstart!</p>
+</div></blockquote>
+</div>
+<ul class="simple">
+<li><p>First, look at the <a class="reference external" href="https://docs.profiling.ydata.ai/latest/getting-started/quickstart/">quickstart overview</a> to get an idea of how it works and what it can do.</p></li>
+<li><p>Check out some <a class="reference external" href="https://docs.profiling.ydata.ai/latest/getting-started/examples/">examples of the output it produces on their site</a></p></li>
+<li><p>If you like what you see there, try it!</p></li>
+</ul>
+</div>
+<div class="section" id="lux">
+<h2><span class="section-number">3.3.5.2. </span>Lux<a class="headerlink" href="#lux" title="Permalink to this headline">¶</a></h2>
 <div class="tip admonition">
 <p class="admonition-title">(Partly) Automated Visual EDA via Lux</p>
 <p>Lux “makes data science easier by automating certain aspects of the data exploration process. Lux is designed to facilitate faster experimentation with data, even when the user does not have a clear idea of what they are looking for. Lux is integrated with an interactive Jupyter widget that allows users to quickly browse through large collections of data directly within their Jupyter notebooks.”</p>
@@ -964,6 +1010,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Feedback wanted: Please let me know if you use it and how it goes! If it’s good, I’ll integrate it more next year into the class.</p></li>
 <li><p>For more, the <a class="reference external" href="https://github.com/lux-org/lux">repo is here</a> and the <a class="reference external" href="https://lux-api.readthedocs.io/en/latest/index.html">docs are here</a>.</p></li>
 </ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -995,7 +1042,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="04e-visualEDA.html" title="previous page"><span class="section-number">3.3.4. </span>Visual EDA Walkthrough</a>
-    <a class='right-next' id="next-link" href="04f1-viz_narrative.html" title="next page"><span class="section-number">3.3.6. </span>Better Plots</a>
+    <a class='right-next' id="next-link" href="04e3-binscatter.html" title="next page"><span class="section-number">3.3.6. </span>Goodbye Scatterplot, Welcome Binned Scatterplot</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

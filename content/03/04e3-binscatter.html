@@ -1,0 +1,1597 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHB6CBHE8P"></script>
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QHB6CBHE8P');
+   </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3.3.6. Goodbye Scatterplot, Welcome Binned Scatterplot &#8212; LeDataSciFi-2025</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/moviescript.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/fin377_specialformatting.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3.3.7. Upgrading Pairplots with Binscatter" href="04e4-binscatterGrids.html" />
+    <link rel="prev" title="3.3.5. Visual EDA Tools" href="04e2-visualEDA-tools.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">LeDataSciFi-2025</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Syllabus
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/objectives.html">
+   Objectives
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/outcomes.html">
+   Outcomes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/about_us.html">
+   About us + office hours
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/structure_and_policies.html">
+   Course structure + policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/use_of_gpt.html">
+   ChatGPT and other AI
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/gradeoverview.html">
+   Grading
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/interest.html">
+   Interested but unsure?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/bootcamp.html">
+   Pre-Class Bootcamp
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/hall_of_awesomeness.html">
+   The Hall of Awesomeness
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/acknowledgments.html">
+   Gratitude
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Schedule, tips, resources
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/schedule.html">
+   Dashboard, key links, schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/help.html">
+   Help
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/tips.html">
+   Tips and hacks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/LeDataSciFi/ledatascifi-2025/tree/main/community_codebook">
+   Community Codebook
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/LeDataSciFi/ledatascifi-2025/tree/main/handouts">
+   Class Handouts
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Assignments and participation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/howto_do.html">
+   How to start and turn in assignments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/howto_review.html">
+   How to do your peer reviews
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../assignments/mid_proj_placeholder.html">
+   Midterm project AKA ASGN 5
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Textbook
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../01/00_Getting_Started.html">
+   1. Motivation and Getting Started
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/01_Motivation.html">
+     1.1. Motivation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/02_Setup.html">
+     1.2. Set up
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/03_github.html">
+     1.3. GitHub Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/03a_githubworkflow.html">
+     1.4. The GitHub Workflow
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/04_Markdown.html">
+     1.5. Markdown basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/05_jupyterlab.html">
+     1.6. Jupyter Lab Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/06_python.html">
+     1.7. Python Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/07_debugging.html">
+     1.8. Debugging
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/07a_errors.html">
+     1.9. Errors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/08_libraries.html">
+     1.10. Libraries/Packages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01/09_gitignore.html">
+     1.11. Gitignore Files
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../02/10_Golden_1.html">
+   2. Good Analysis Practices
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_2.html">
+     2.1. A case study of bad research
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_3.html">
+     2.2. The golden rules
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_6.html">
+     2.3. Organizing your projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_7.html">
+     2.4. Filepaths
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_4.html">
+     2.5. Storing data smartly
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_5a.html">
+     2.6. Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_5b.html">
+     2.7. Writing good code comments
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02/10_Golden_8.html">
+     2.8. Writing good code
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="00_Data_Wrangling_Intro.html">
+   3. Wrangling with Data
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="01_Numpy.html">
+     3.1. Numpy
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="01a_NumpyCS.html">
+       3.1.1. Numpy + Scientific Computing
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="01b_NumpyBasics.html">
+       3.1.2. A (Very) Short Introduction
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="01c_NumpyPractice.html">
+       3.1.3. Exercises
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="01d_NumpyResources.html">
+       3.1.4. More Resources
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="02a_pandasIntro.html">
+     3.2. Pandas
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="02a_pandasTips.html">
+       3.2.1. Tips
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="02b_pandasVocab.html">
+       3.2.2. Vocab and Long vs Wide Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="02c_commonFcns.html">
+       3.2.3. Common Functions
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="02d_temp.html">
+       3.2.4. Temp. vs Perm. Objects
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="02e_eda_golden.html">
+       3.2.5. Golden Rules + EDA
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="02f_chains.html">
+       3.2.6. Pandas Chains
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="02g_commontasks.html">
+       3.2.7. Common Tasks
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="02h_exercises.html">
+       3.2.8. Exercises
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="02j_resourcesAndSum.html">
+       3.2.9. Summary and Resources
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 current active collapsible-parent">
+    <a class="reference internal" href="04a-dataviz.html">
+     3.3. Data Visualization
+    </a>
+    <ul class="current collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="04b-whyplot.html">
+       3.3.1. The Role of Viz in Analysis
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04c-makeplot.html">
+       3.3.2. Making a Plot
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04d-whichplot.html">
+       3.3.3. Which Plot Type Should I Use?
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04e-visualEDA.html">
+       3.3.4. Visual EDA Walkthrough
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04e2-visualEDA-tools.html">
+       3.3.5. Visual EDA Tools
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       3.3.6. Bin Scatter Plots
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04e4-binscatterGrids.html">
+       3.3.7. Bin Scatter + Pair Plots
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04f1-viz_narrative.html">
+       3.3.8. Better Plots
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04f2-customizing_figs.html">
+       3.3.9. Customizing figures
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04f3-interactive_figs.html">
+       3.3.10. Interactive plots:
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         plotly
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04f4-exercises.html">
+       3.3.11. Exercises
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04h_Summary.html">
+       3.3.12. Chapter Summary
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="05a-otherskills.html">
+     3.4. Other (Important) Data Wrangling Skills
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="05b_merging.html">
+       3.4.1. Merging
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="05c_missingdata.html">
+       3.4.2. Dealing with Missing Data
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="05d_outliers.html">
+       3.4.3. Dealing with Outliers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="05e_summary.html">
+       3.4.4. Chapter Summary
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../04/00_World_Wide_Data.html">
+   4. Building and Using Large (Textual) Data
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/01_Intro_to_scraping.html">
+     4.1. Getting Data off the Web
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/01a_openingAndParsing.html">
+     4.2. Opening + Parsing
+     <em>
+      a
+     </em>
+     Webpage
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/01b_spiders.html">
+     4.3. Building a spider
+    </a>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../04/02_strings.html">
+     4.4. Exploiting Textual Data
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04/02a_Python%20Strings.html">
+       4.4.1. Working with Python Strings
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04/02b_regex.html">
+       4.4.2. Regex basics
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04/02c_developing_a_regex.html">
+       4.4.3. Developing a regex
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../04/02d_RegexApplication.html">
+       4.4.4. Intro to NLP - The Anchor Phase Technique
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../05/00_intro.html">
+   5. Data Science Intro
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/01_bigpicture.html">
+     5.1. The promise of ML
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/01b_model_process.html">
+     5.2. Planning a project
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/01a_MLgonewrong.html">
+     5.3. ML Gone Wrong
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/01c_teams.html">
+     5.4. Coding in Teams
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/01d_sharingBigFiles.html">
+     5.5. Sharing large files
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../05/02_reg.html">
+   6. Regression
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/02a_basics.html">
+     6.1. Basics and Notation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/02b_mechanics.html">
+     6.2. Mechanics of running regressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/02c_goodnessOfFit.html">
+     6.3. Goodness of Fit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/02d_interpretingCoefs.html">
+     6.4. Interpreting regression coefficients
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/02e_statisticalSig.html">
+     6.5. Statistical significance
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/02f_warnings.html">
+     6.6.
+     <em>
+      Significant
+     </em>
+     warnings about “statistical significance”
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/02h_summary_colFE.html">
+     6.7. Fixed effects, categorical variables, and prettier regression tables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/02g_summary.html">
+     6.8. Summary and Resources
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../05/03_ML.html">
+   7. ML - Intro &amp; Discussion
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/03a_ML_obj_and_tradeoff.html">
+     7.1. The objective of machine learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/03f_leakage.html">
+     7.2. Data Leakage - Illustration
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/03f_leakage3.html">
+     7.3. Data Leakage - Illustration 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/03f_leakage2.html">
+     7.4. Data Leakage Defined
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/03c_ModelEval.html">
+     7.5. Model evaluation via cross validation (CV)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/03c1_OOS.html">
+     7.6. Model evaluation via Out-of-Sample (OOS)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/03d_whatToMax.html">
+     7.7. Evaluating models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/03e_whichModel.html">
+     7.8. Model selection
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../05/04a_SKLearn.html">
+   8. ML - Code &amp; Implementation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/04b_best_practices.html">
+     8.1. Best Practice Pseudo Code
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/04c_onemodel.html">
+     8.2. SKLearn Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/04d_crossval.html">
+     8.3. Cross-Validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/04e_pipelines.html">
+     8.4. Pipelines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/04e1_preprocessing.html">
+     8.5. Preprocessing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/04f_optimizing_a_model.html">
+     8.6. Optimizing a Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/04h_putting_together.html">
+     8.7. Many Models
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../05/05a_finapps.html">
+   9. Finance Applications
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/05a_compounding.html">
+     9.1. Compounding returns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/05a_rolling.html">
+     9.2. Rolling returns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/05a_expanding.html">
+     9.3. Expanding returns
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/05b_capm.html">
+     9.4. Estimating CAPM
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/05c_factorloadings.html">
+     9.5. Estimating better models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/05c_finpacks.html">
+     9.6. Supercharged resources/packages
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../05/06_thefuture.html">
+   10. The Future
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/06a_saving.html">
+     10.1. Saving Your Work
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/06b_nextsteps.html">
+     10.2. Faster, better, stronger
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/06c_dashboards.html">
+     10.3. Dashboards
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Slides and Memes
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../slides/slides.html">
+   Slides from previous classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../slides/memes.html">
+   Memes
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/03/04e3-binscatter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/LeDataSciFi/ledatascifi-2025"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/LeDataSciFi/ledatascifi-2025/issues/new?title=Issue%20on%20page%20%2Fcontent/03/04e3-binscatter.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/LeDataSciFi/ledatascifi-2025/edit/main/content/03/04e3-binscatter.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/LeDataSciFi/ledatascifi-2025/main?urlpath=lab/tree/content/03/04e3-binscatter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/LeDataSciFi/ledatascifi-2025/blob/main/content/03/04e3-binscatter.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-scatterplot">
+   3.3.6.1. The Scatterplot
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scatterplot-alternatives">
+   3.3.6.2. Scatterplot Alternatives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-binned-scatterplot">
+   3.3.6.3. The Binned Scatterplot
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#details">
+     3.3.6.3.1. Details
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binsreg">
+     3.3.6.3.2. Binsreg
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   3.3.6.4. Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   3.3.6.5. References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="goodbye-scatterplot-welcome-binned-scatterplot">
+<h1><span class="section-number">3.3.6. </span>Goodbye Scatterplot, Welcome Binned Scatterplot<a class="headerlink" href="#goodbye-scatterplot-welcome-binned-scatterplot" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This page was made by Matteo Courthoud, whose <a class="reference external" href="https://matteocourthoud.github.io/">website</a> contains incredible resources I encourage you to explore. Look under his “Posts” and also within his “Courses”.</p>
+<p>I have made a few minor adjustments below to tailor this to LDSF students and might do some more in the future.</p>
+<p>The upshot is that students can use the following code to make binscatter plots quickly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">binsreg</span>
+<span class="n">binsreg</span><span class="o">.</span><span class="n">binsreg</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">help</span><span class="p">(</span><span class="n">binsreg</span><span class="o">.</span><span class="n">binsreg</span><span class="p">)</span> <span class="c1"># to see the function options</span>
+</pre></div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">binsreg</span></code> code uses a different plotting package than <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>. Matteo’s code makes it easy to use seaborn instead for plotting.</p>
+</div>
+<p>When we want to visualize the relationship between two continuous variables, the go-to plot is the <strong>scatterplot</strong>. It’s a very intuitive visualization tool that allows us to directly look at the data. However, when we have a lot of data and/or when the data is skewed, scatterplots can be too noisy to be informative.</p>
+<p>In this blog post, I am going to review a very powerful alternative to the scatterplot to visualize correlations between two variables: the <strong>binned scatterplot</strong>. Binned scatterplots are not only a great visualization tool, but they can also be used to do inference on the conditional distribution of the dependent variable.</p>
+<div class="section" id="the-scatterplot">
+<h2><span class="section-number">3.3.6.1. </span>The Scatterplot<a class="headerlink" href="#the-scatterplot" title="Permalink to this headline">¶</a></h2>
+<p>Let’s start with an example. Suppose we are an <strong>online marketplace</strong> where multiple firms offer goods that consumer can efficiently browse, compare and buy. Our <strong>dataset</strong> consists in a snapshot of the firms active on the marketplace.</p>
+<p>Let’s load the data and have a look at it. You can find the code for the data generating process <span class="xref myst">here</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_data</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">10_000</span><span class="p">):</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    
+    <span class="c1"># Does the firm sells only online?</span>
+    <span class="n">online</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    
+    <span class="c1"># How many products does the firm have</span>
+    <span class="n">products</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    
+    <span class="c1"># What is the age of the firm</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">products</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> 
+    
+    <span class="c1"># Sales</span>
+    <span class="n">sales</span> <span class="o">=</span> <span class="mf">1e3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="n">products</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.3</span><span class="o">*</span><span class="n">products</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">online</span><span class="p">)</span><span class="o">*</span><span class="n">t</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">online</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">N</span><span class="p">)</span>
+
+    <span class="c1"># Generate the dataframe</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="n">t</span><span class="p">,</span> <span class="s1">&#39;sales&#39;</span><span class="p">:</span> <span class="n">sales</span><span class="p">,</span> <span class="s1">&#39;online&#39;</span><span class="p">:</span> <span class="n">online</span><span class="p">,</span> <span class="s1">&#39;products&#39;</span><span class="p">:</span> <span class="n">products</span><span class="p">})</span>
+            
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sales</th>
+      <th>online</th>
+      <th>products</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.312777</td>
+      <td>450.858091</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.176221</td>
+      <td>1121.882449</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.764048</td>
+      <td>2698.714549</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.082742</td>
+      <td>1627.746386</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3.156503</td>
+      <td>1464.593939</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We have information on 10.000 firms. For each firm we know:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">age</span></code>: the age of the firm</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sales</span></code>: the monthly sales from last month</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">online</span></code>: whether the firm is only active online</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">products</span></code>: the number of products that the firm offers</p></li>
+</ul>
+<p>Suppose we are interested in understanding the relationship between <code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">sales</span></code>. What is the <strong>life-cycle</strong> of sales?</p>
+<p>Let’s start with a simple <strong>scatterplot</strong> of <code class="docutils literal notranslate"><span class="pre">sales</span></code> over <code class="docutils literal notranslate"><span class="pre">age</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sales by firm&#39;s age&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/04e3-binscatter_8_0.png" src="../../_images/04e3-binscatter_8_0.png" />
+</div>
+</div>
+<p>The plot is extremely <strong>noisy</strong>. We have a lot of observations, therefore, it is very difficult to visualize them all. If we had to guess, we could say that the relationship looks negative (<code class="docutils literal notranslate"><span class="pre">sales</span></code> decrease with <code class="docutils literal notranslate"><span class="pre">age</span></code>), but it would be a very uninformed guess.</p>
+<p>We are now going to explore some plausible tweaks and alternatives.</p>
+</div>
+<div class="section" id="scatterplot-alternatives">
+<h2><span class="section-number">3.3.6.2. </span>Scatterplot Alternatives<a class="headerlink" href="#scatterplot-alternatives" title="Permalink to this headline">¶</a></h2>
+<p>What can we do when we have an extremely dense scatterplot? One solution could be to plot the <strong>density</strong> of the observations, instead of the observations themselves.</p>
+<p>There are multiple solutions in Python to visualize the density of a 2-dimensional distribution. A very useful one is <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a> <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.jointplot.html">jointplot</a>. <code class="docutils literal notranslate"><span class="pre">jointplot</span></code> plots the joint distribution of two variables, together with the marginal distributions along the axis. The default option is the scatterplot, but one can also choose to add a regression line (<code class="docutils literal notranslate"><span class="pre">reg</span></code>), change the plot to a histogram (<code class="docutils literal notranslate"><span class="pre">hist</span></code>), a hexplot (<code class="docutils literal notranslate"><span class="pre">hex</span></code>), or a <a class="reference external" href="https://en.wikipedia.org/wiki/Kernel_density_estimation">kernel density estimate</a> (<code class="docutils literal notranslate"><span class="pre">kde</span></code>).</p>
+<p>Let’s try the <strong>hexplot</strong>, which is basically a histogram of the data, where the bins are hexagons, in the 2-dimensional space.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hex&#39;</span><span class="p">,</span> <span class="p">);</span>
+<span class="n">s</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">);</span>
+<span class="n">s</span><span class="o">.</span><span class="n">ax_marg_y</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">);</span>
+<span class="n">s</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Sales by firm&#39;s age&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/04e3-binscatter_12_0.png" src="../../_images/04e3-binscatter_12_0.png" />
+</div>
+</div>
+<p>Not much has changed. It looks like the distributions of <code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">sales</span></code> are both very <strong>skewed</strong> and, therefore, most of the action is concentrated in a very small subspace.</p>
+<p>Maybe we could remove <strong>outliers</strong> and zoom-in on the area where most of the data is located. Let’s zoom-in on the bottom-left corner, on observations what have <code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">&lt;</span> <span class="pre">3</span></code> and <code class="docutils literal notranslate"><span class="pre">sales</span> <span class="pre">&lt;</span> <span class="pre">3000</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;age &lt; 3 &amp; sales &lt; 3000&quot;</span><span class="p">),</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hex&quot;</span><span class="p">);</span>
+<span class="n">s</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">);</span>
+<span class="n">s</span><span class="o">.</span><span class="n">ax_marg_y</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">);</span>
+<span class="n">s</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Sales by firm&#39;s age&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/04e3-binscatter_14_0.png" src="../../_images/04e3-binscatter_14_0.png" />
+</div>
+</div>
+<p>Now there is much less empty space, but it does not look like we are going far. The joint distribution is <strong>still too skewed</strong>. This is the case when the data follows some power distribution, as it’s often the case with business data.</p>
+<p>One solution is to <strong>transform</strong> the variable, by taking the <a class="reference external" href="https://en.wikipedia.org/wiki/Natural_logarithm"><strong>natural logarithm</strong></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;log_age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;log_sales&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sales&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now plot the relationship between the logarithms of <code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">sales</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;log_age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;log_sales&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hex&#39;</span><span class="p">);</span>
+<span class="n">s</span><span class="o">.</span><span class="n">ax_joint</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">);</span>
+<span class="n">s</span><span class="o">.</span><span class="n">ax_marg_y</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">);</span>
+<span class="n">s</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Sales by firm&#39;s age&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/04e3-binscatter_18_0.png" src="../../_images/04e3-binscatter_18_0.png" />
+</div>
+</div>
+<p>The logarithm definitely helped. Now the data is more spread across space, which means that the visualization is more informative. Moreover, it looks like there is <strong>no relationship</strong> between the two variables.</p>
+<p>However, there is still <strong>too much noise</strong>. Maybe data visualization alone is not sufficient do draw a conclusion.</p>
+<p>Let’s swap to a more structured approach: <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_regression"><strong>linear regression</strong></a>. Let’s linearly regress <code class="docutils literal notranslate"><span class="pre">log_sales</span></code> on <code class="docutils literal notranslate"><span class="pre">log_age</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.formula.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">smf</span>
+
+<span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;log_sales ~ log_age&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>    7.3971</td> <td>    0.015</td> <td>  478.948</td> <td> 0.000</td> <td>    7.367</td> <td>    7.427</td>
+</tr>
+<tr>
+  <th>log_age</th>   <td>    0.1690</td> <td>    0.010</td> <td>   16.888</td> <td> 0.000</td> <td>    0.149</td> <td>    0.189</td>
+</tr>
+</table></div></div>
+</div>
+<p>The regression coefficient for <code class="docutils literal notranslate"><span class="pre">log_age</span></code> is <strong>positive</strong> and statistically significant (i.e. different from zero). It seems that all previous visualizations were very <strong>misleading</strong>. From none of the graphs above we could have guessed such a strong positive relationship.</p>
+<p>However, maybe this relationship is different for <code class="docutils literal notranslate"><span class="pre">online</span></code>-only firms and the rest of the sample. We need to control for this variable in order to avoid <a class="reference external" href="https://en.wikipedia.org/wiki/Simpson%27s_paradox">Simpson’s Paradox</a> and, more generally, bias.</p>
+<p>With linear regression, we can <strong>condition the analysis on covariates</strong>. Let’s add the binary indicator for <code class="docutils literal notranslate"><span class="pre">online</span></code>-only firms and the variable counting the number of <code class="docutils literal notranslate"><span class="pre">products</span></code> to the regression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s1">&#39;log_sales ~ log_age + online + products&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>    6.5717</td> <td>    0.037</td> <td>  176.893</td> <td> 0.000</td> <td>    6.499</td> <td>    6.644</td>
+</tr>
+<tr>
+  <th>log_age</th>   <td>    0.0807</td> <td>    0.010</td> <td>    7.782</td> <td> 0.000</td> <td>    0.060</td> <td>    0.101</td>
+</tr>
+<tr>
+  <th>online</th>    <td>    0.1447</td> <td>    0.027</td> <td>    5.433</td> <td> 0.000</td> <td>    0.092</td> <td>    0.197</td>
+</tr>
+<tr>
+  <th>products</th>  <td>    0.3456</td> <td>    0.014</td> <td>   24.110</td> <td> 0.000</td> <td>    0.317</td> <td>    0.374</td>
+</tr>
+</table></div></div>
+</div>
+<p>The coefficient for <code class="docutils literal notranslate"><span class="pre">log_age</span></code> is still positive and statistically significant, but its <strong>magnitude</strong> has halved.</p>
+<p>What should we conclude? It seems that <code class="docutils literal notranslate"><span class="pre">sales</span></code> increase over age, on average. However, this pattern might be very <strong>non-linear</strong>.</p>
+<p>Within the linear regression framework, one approach could be to <strong>add extra terms</strong> such as polynomials (<code class="docutils literal notranslate"><span class="pre">age^2</span></code>) or categorical features (e.g. <code class="docutils literal notranslate"><span class="pre">age</span> <span class="pre">&lt;</span> <span class="pre">2</span></code>). However, it would be really cool if there was a more <strong>flexible</strong> (i.e. <a class="reference external" href="https://en.wikipedia.org/wiki/Nonparametric_statistics">non-parametric</a>) approach that could inform us on the relationship between firm <code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">sales</span></code>.</p>
+<p>If only…</p>
+</div>
+<div class="section" id="the-binned-scatterplot">
+<h2><span class="section-number">3.3.6.3. </span>The Binned Scatterplot<a class="headerlink" href="#the-binned-scatterplot" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>binned scatterplot</strong> is a very powerful tool that provides a <strong>flexible</strong> and <strong>parsimonious</strong> way of visualizing and summarizing conditional means (and not only) in large datasets.</p>
+<p>The <strong>idea</strong> behind the binned scatterplot is to divide the conditioning variable, <code class="docutils literal notranslate"><span class="pre">age</span></code> in our example, into <strong>equally sized bins or quantiles</strong>, and then plot the conditional mean of the dependent variable, <code class="docutils literal notranslate"><span class="pre">sales</span></code> in our example, within each bin.</p>
+<div class="section" id="details">
+<h3><span class="section-number">3.3.6.3.1. </span>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://arxiv.org/abs/1902.09608">Cattaneo, Crump, Farrell, Feng (2021)</a> have built an extremely good package for binned scatterplots in R, <a class="reference external" href="https://cran.r-project.org/web/packages/binsreg/index.html">binsreg</a>. Moreover, they have ported the package to Python. We can install <code class="docutils literal notranslate"><span class="pre">binsreg</span></code> directly from pip using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">binsreg</span></code>. You can find more information on the Python package <a class="reference external" href="https://pypi.org/project/binsreg/">here</a>, while the original and detailed R package documentation can be found <a class="reference external" href="https://www.rdocumentation.org/packages/binsreg/versions/0.7/topics/binsreg">here</a>.</p>
+<p>The most important choice when building a binned scatterplot is the <strong>number of bins</strong>. The trade-off is the usual <a class="reference external" href="https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff"><strong>bias-variance trade-off</strong></a>. By picking a higher number of bins, we have more points in the graph. In the extreme, we end up having a standard <strong>scatterplot</strong> (assuming the conditioning variable is continuous). On the other hand, by decreasing the number bins, the plot will be more stable. However, in the extreme, we will have a <strong>single point</strong> representing the sample mean.</p>
+<p><a class="reference external" href="https://arxiv.org/abs/1902.09608">Cattaneo, Crump, Farrell, Feng (2021)</a> prove that, in the basic binned scatterplot, the number of bins that minimizes the mean squared error is proportional to <span class="math notranslate nohighlight">\(n^{1/3}\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the number of observations. Therefore, in general, more observations lead to more bins.</p>
+<p><a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/smj.3199">Starr and Goldfarb (2020)</a> add the following consideration:</p>
+<blockquote>
+<div><p>“<em>However other elements are also important. For example, holding the distribution of x constant, the more curvilinear the true relationship between x and y is, the more bins the algorithm will select (otherwise mean squared error will increase). This implies that even with large n, few bins will be chosen for relatively flat relationships. The calculation of the optimal number of bins in a basic binned scatterplot thus takes into account the amount and location of variation in the data available to identify the relationship between x and y.</em>”</p>
+</div></blockquote>
+<p>It is strongly recommended to use the default optimal number of bins. However, one can also set a customized number of bins in <code class="docutils literal notranslate"><span class="pre">binsreg</span></code> with the <code class="docutils literal notranslate"><span class="pre">nbins</span></code> option.</p>
+<p>Binned scatterplots however, do not just compute conditional means, for optimally chosen intervals, but they can also provide <strong>inference</strong> for these means. In particular, we can build <strong>confidence intervals</strong> around each data point. In the <code class="docutils literal notranslate"><span class="pre">binsreg</span></code> package, the option <code class="docutils literal notranslate"><span class="pre">ci</span></code> adds confidence intervals to the estimation results. The option takes as input a tuple of parameters <code class="docutils literal notranslate"><span class="pre">(p,</span> <span class="pre">s)</span></code> and uses a piecewise polynomial of degree <code class="docutils literal notranslate"><span class="pre">p</span></code> with <code class="docutils literal notranslate"><span class="pre">s</span></code> smoothness constraints to construct the confidence intervals. By default, the confidence intervals are not included in the plot. For what concerns the choice of <code class="docutils literal notranslate"><span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">s</span></code>, the <a class="reference external" href="https://www.rdocumentation.org/packages/binsreg/versions/0.7/topics/binsreg">package documentation</a> reports:</p>
+<blockquote>
+<div><p>“<em>Recommended specification is ci=c(3,3), which adds confidence intervals based on cubic B-spline estimate of the regression function of interest to the binned scatter plot.</em>”</p>
+</div></blockquote>
+</div>
+<div class="section" id="binsreg">
+<h3><span class="section-number">3.3.6.3.2. </span>Binsreg<a class="headerlink" href="#binsreg" title="Permalink to this headline">¶</a></h3>
+<p>One problem with the Python version of the package, is that is not very Python-ish. Therefore, I have wrapped the <code class="docutils literal notranslate"><span class="pre">binsreg</span></code> package into a function <code class="docutils literal notranslate"><span class="pre">binscatter</span></code> that takes care of cleaning and formatting the output in a nicely readable <a class="reference external" href="https://pandas.pydata.org/">Pandas</a> DataFrame.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A note from Don Bowen. As of 2025, <code class="docutils literal notranslate"><span class="pre">binsreg</span></code> automatically makes plots. Under the hood, it uses a different plotting package than we do in class (<code class="docutils literal notranslate"><span class="pre">plotnine</span></code>, which is good!). So calling <code class="docutils literal notranslate"><span class="pre">binsreg()</span></code> now automatically creates plots. I don’t think they look as nice, but the substance is good enough!</p>
+<p>Matteo’s code below runs the binned regression and saves it to a dataframe he can then plot using <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>.</p>
+<p>Indeed, this function Matteo wrote will just directly make a <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> plot, instead of the <code class="docutils literal notranslate"><span class="pre">binsreg</span></code> default.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">binscatterplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Binned scatterplot function.&quot;&quot;&quot;</span>
+    <span class="n">df_est</span> <span class="o">=</span> <span class="n">binscatter</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="n">hue</span><span class="p">,</span> <span class="n">noplot</span><span class="o">==</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">plot</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">hue</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_est</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">plot</span>
+
+<span class="c1"># example:</span>
+<span class="n">binscatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">binsreg</span> <span class="c1"># %pip install binsreg   (if needed)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">binscatter</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c1"># Estimate binsreg</span>
+    <span class="n">est</span> <span class="o">=</span> <span class="n">binsreg</span><span class="o">.</span><span class="n">binsreg</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    
+    <span class="c1"># Retrieve estimates</span>
+    <span class="n">df_est</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">dots</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">est</span><span class="o">.</span><span class="n">data_plot</span><span class="p">])</span>
+    <span class="n">df_est</span> <span class="o">=</span> <span class="n">df_est</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">),</span> <span class="s1">&#39;fit&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)})</span>
+    
+    <span class="c1"># Add confidence intervals</span>
+    <span class="k">if</span> <span class="s2">&quot;ci&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">df_est</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_est</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">ci</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">est</span><span class="o">.</span><span class="n">data_plot</span><span class="p">]))</span>
+        <span class="n">df_est</span> <span class="o">=</span> <span class="n">df_est</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
+        <span class="n">df_est</span><span class="p">[</span><span class="s1">&#39;ci&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_est</span><span class="p">[</span><span class="s1">&#39;ci_r&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df_est</span><span class="p">[</span><span class="s1">&#39;ci_l&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># Rename groups</span>
+    <span class="k">if</span> <span class="s2">&quot;by&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">df_est</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_est</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;by&quot;</span><span class="p">)]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">df_est</span> <span class="o">=</span> <span class="n">df_est</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;by&quot;</span><span class="p">)})</span>
+
+    <span class="k">return</span> <span class="n">df_est</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now proceed to <strong>estimate</strong> and <strong>visualize</strong> the binned scatterplot for <code class="docutils literal notranslate"><span class="pre">age</span></code> based on <code class="docutils literal notranslate"><span class="pre">sales</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Suppress some warnings from binsreg</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">UserWarning</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="s2">&quot;binsreg&quot;</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="s2">&quot;binsreg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimate binsreg</span>
+<span class="n">df_est</span> <span class="o">=</span> <span class="n">binscatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">df_est</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/04e3-binscatter_33_0.png" src="../../_images/04e3-binscatter_33_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>group</th>
+      <th>age</th>
+      <th>bin</th>
+      <th>isknot</th>
+      <th>mid</th>
+      <th>sales</th>
+      <th>ci_l</th>
+      <th>ci_r</th>
+      <th>ci</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Full Sample</td>
+      <td>0.016048</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1653.865445</td>
+      <td>1362.722061</td>
+      <td>1893.998686</td>
+      <td>531.276626</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Full Sample</td>
+      <td>0.049295</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1666.329034</td>
+      <td>1486.504692</td>
+      <td>1890.922562</td>
+      <td>404.417871</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Full Sample</td>
+      <td>0.086629</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1937.095012</td>
+      <td>1727.248438</td>
+      <td>2124.811346</td>
+      <td>397.562909</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Full Sample</td>
+      <td>0.125955</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1972.484136</td>
+      <td>1801.125187</td>
+      <td>2243.034755</td>
+      <td>441.909568</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Full Sample</td>
+      <td>0.167636</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2142.560866</td>
+      <td>1937.677738</td>
+      <td>2405.785562</td>
+      <td>468.107824</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">binscatter</span></code> function outputs a dataset in which, for each bin of the conditioning variable, <code class="docutils literal notranslate"><span class="pre">age</span></code>, we have values and confidence intervals for the outcome variable, <code class="docutils literal notranslate"><span class="pre">sales</span></code>.</p>
+<p>We can now plot the estimates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot binned scatterplot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_est</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="s1">&#39;ci&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_est</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sales by firm&#39;s age&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/04e3-binscatter_35_0.png" src="../../_images/04e3-binscatter_35_0.png" />
+</div>
+</div>
+<p>The plot is quite revealing. Now the relationship looks extremely <strong>non-linear</strong> with a sharp increase in <code class="docutils literal notranslate"><span class="pre">sales</span></code> at the beginning of the lifetime of a firm, followed by a plateau.</p>
+<p>Moreover, the plot is also telling us information regarding the distributions of <code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">sales</span></code>. In fact, the plot is more dense on the left, where the distribution of <code class="docutils literal notranslate"><span class="pre">age</span></code> is concentrated. Also, confidence intervals are tighter on the left, where most of the conditional distribution of <code class="docutils literal notranslate"><span class="pre">sales</span></code> lies.</p>
+<p>As we already discussed in the previous section, it might be important to control for other variables. For example, the number of <code class="docutils literal notranslate"><span class="pre">products</span></code>, since firms that sell more products probably survive longer in the markets and also make more sales.</p>
+<p><code class="docutils literal notranslate"><span class="pre">binsreg</span></code> allows to <strong>condition</strong> the analysis on any number of variables, with the <code class="docutils literal notranslate"><span class="pre">w</span></code> option.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimate binsreg</span>
+<span class="n">df_est</span> <span class="o">=</span> <span class="n">binscatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;products&#39;</span><span class="p">],</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/04e3-binscatter_37_0.png" src="../../_images/04e3-binscatter_37_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot binned scatterplot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_est</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="s1">&#39;ci&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_est</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sales by firm&#39;s age&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/04e3-binscatter_38_0.png" src="../../_images/04e3-binscatter_38_0.png" />
+</div>
+</div>
+<p>Conditional on number of <code class="docutils literal notranslate"><span class="pre">products</span></code>, the shape of the <code class="docutils literal notranslate"><span class="pre">sales</span></code> life-cycle changes further. Now, after an initial increase in sales, we observe a gradual decrease over time.</p>
+<p>Do <code class="docutils literal notranslate"><span class="pre">online</span></code>-only firms have different <code class="docutils literal notranslate"><span class="pre">sales</span></code> life-cycles with respect to mixed online-offline firms? We can produce different binned scatterplots <strong>by group</strong> using the option <code class="docutils literal notranslate"><span class="pre">by</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimate binsreg</span>
+<span class="n">df_est</span> <span class="o">=</span> <span class="n">binscatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;online&#39;</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;products&#39;</span><span class="p">],</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Plot binned scatterplot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_est</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;online&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="s1">&#39;ci&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_est</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;online==0&quot;</span><span class="p">),</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="s1">&#39;ci&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_est</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;online==1&quot;</span><span class="p">),</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sales by firm&#39;s age&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/04e3-binscatter_40_0.png" src="../../_images/04e3-binscatter_40_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="../../_images/04e3-binscatter_40_2.png" src="../../_images/04e3-binscatter_40_2.png" />
+</div>
+</div>
+<p>From the binned scatterplot, we can see that <code class="docutils literal notranslate"><span class="pre">online</span></code> products have on average shorter lifetimes, with a higher initial peak in <code class="docutils literal notranslate"><span class="pre">sales</span></code>, followed by a sharper decline.</p>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2><span class="section-number">3.3.6.4. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>In this blog post, we have analyzed a very powerful data visualization tool: the <strong>binned scatterplot</strong>. In particular, we have seen how to use the <code class="docutils literal notranslate"><span class="pre">binsreg</span></code> package to automatically pick the optimal number of bins and perform non-parametric inference on conditional means. However, the <code class="docutils literal notranslate"><span class="pre">binsreg</span></code> package offers much more than that and I strongly recommend checking <a class="reference external" href="https://cran.r-project.org/web/packages/binsreg/binsreg.pdf">its manual</a> more in depth.</p>
+</div>
+<div class="section" id="references">
+<h2><span class="section-number">3.3.6.5. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>[1] E Starr, B Goldfarb, <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/smj.3199">Binned Scatterplots: A Simple Tool to Make Research Easier and Better</a> (2020), Strategic Management Journal.</p>
+<p>[2] M. D. Cattaneo, R. K. Crump, M. H. Farrell, Y. Feng, <a class="reference external" href="https://arxiv.org/abs/1902.09608">On Binscatter</a> (2021), working paper.</p>
+<p>[3] P. Goldsmith-Pinkham, <a class="reference external" href="https://www.youtube.com/watch?v=fg9T2gPZCIs">Lecture 6. Linear Regression II: Semiparametrics and Visualization</a>, Applied Metrics PhD Course.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="04e2-visualEDA-tools.html" title="previous page"><span class="section-number">3.3.5. </span>Visual EDA Tools</a>
+    <a class='right-next' id="next-link" href="04e4-binscatterGrids.html" title="next page"><span class="section-number">3.3.7. </span>Upgrading Pairplots with Binscatter</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Prof. Donald Bowen<br/>
+        
+            &copy; Copyright 2025.<br/>
+          <div class="extra_footer">
+            You're doing well, keep going!
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

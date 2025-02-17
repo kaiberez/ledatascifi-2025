@@ -15,7 +15,7 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.3.6. Better Plots &#8212; LeDataSciFi-2025</title>
+    <title>3.3.8. Better Plots &#8212; LeDataSciFi-2025</title>
     
   <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -68,8 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.3.7. Customizing figures" href="04f2-customizing_figs.html" />
-    <link rel="prev" title="3.3.5. Visual EDA Tools" href="04e2-visualEDA-tools.html" />
+    <link rel="next" title="3.3.9. Customizing figures" href="04f2-customizing_figs.html" />
+    <link rel="prev" title="3.3.7. Upgrading Pairplots with Binscatter" href="04e4-binscatterGrids.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -456,19 +456,29 @@ const thebe_selector_output = ".output, .cell_output"
        3.3.5. Visual EDA Tools
       </a>
      </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04e3-binscatter.html">
+       3.3.6. Bin Scatter Plots
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04e4-binscatterGrids.html">
+       3.3.7. Bin Scatter + Pair Plots
+      </a>
+     </li>
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
-       3.3.6. Better Plots
+       3.3.8. Better Plots
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="04f2-customizing_figs.html">
-       3.3.7. Customizing figures
+       3.3.9. Customizing figures
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="04f3-interactive_figs.html">
-       3.3.8. Interactive plots:
+       3.3.10. Interactive plots:
        <code class="docutils literal notranslate">
         <span class="pre">
          plotly
@@ -478,12 +488,12 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="04f4-exercises.html">
-       3.3.9. Exercises
+       3.3.11. Exercises
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="04h_Summary.html">
-       3.3.10. Chapter Summary
+       3.3.12. Chapter Summary
       </a>
      </li>
     </ul>
@@ -948,12 +958,12 @@ const thebe_selector_output = ".output, .cell_output"
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-theory-of-good-visuals">
-   3.3.6.1. The theory of good visuals
+   3.3.8.1. The theory of good visuals
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#transforming-bad-figures-to-good-ones">
-   3.3.6.2. Transforming bad figures to good ones
+   3.3.8.2. Transforming bad figures to good ones
   </a>
  </li>
 </ul>
@@ -968,9 +978,9 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="section" id="better-plots">
-<h1><span class="section-number">3.3.6. </span>Better Plots<a class="headerlink" href="#better-plots" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3.3.8. </span>Better Plots<a class="headerlink" href="#better-plots" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="the-theory-of-good-visuals">
-<h2><span class="section-number">3.3.6.1. </span>The theory of good visuals<a class="headerlink" href="#the-theory-of-good-visuals" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.3.8.1. </span>The theory of good visuals<a class="headerlink" href="#the-theory-of-good-visuals" title="Permalink to this headline">¶</a></h2>
 <p>There is an enormous amount of scholarship and debate about what makes for <em><strong>effective</strong></em> graphs and I can’t possibly do the field justice. Below is simply one person’s distillation of some tips that are reasonably well agreed upon. I’m aiming for concise here so that we can practice, but if you want more, visit the links below.</p>
 <div class="warning admonition">
 <p class="admonition-title"><a class="reference external" href="https://www.biostat.wisc.edu/~kbroman/presentations/IowaState2013/graphs_combined.pdf">Don’ts</a></p>
@@ -1012,7 +1022,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="transforming-bad-figures-to-good-ones">
-<h2><span class="section-number">3.3.6.2. </span>Transforming bad figures to good ones<a class="headerlink" href="#transforming-bad-figures-to-good-ones" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.3.8.2. </span>Transforming bad figures to good ones<a class="headerlink" href="#transforming-bad-figures-to-good-ones" title="Permalink to this headline">¶</a></h2>
 <p><img alt="" src="https://stat545.com/img/less-is-more-darkhorse-analytics.gif" /></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://clauswilke.com/dataviz/telling-a-story.html">Tell a story</a></p></li>
@@ -1049,8 +1059,8 @@ const thebe_selector_output = ".output, .cell_output"
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="04e2-visualEDA-tools.html" title="previous page"><span class="section-number">3.3.5. </span>Visual EDA Tools</a>
-    <a class='right-next' id="next-link" href="04f2-customizing_figs.html" title="next page"><span class="section-number">3.3.7. </span>Customizing figures</a>
+    <a class='left-prev' id="prev-link" href="04e4-binscatterGrids.html" title="previous page"><span class="section-number">3.3.7. </span>Upgrading Pairplots with Binscatter</a>
+    <a class='right-next' id="next-link" href="04f2-customizing_figs.html" title="next page"><span class="section-number">3.3.9. </span>Customizing figures</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

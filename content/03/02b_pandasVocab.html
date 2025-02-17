@@ -455,18 +455,28 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="04e3-binscatter.html">
+       3.3.6. Bin Scatter Plots
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="04e4-binscatterGrids.html">
+       3.3.7. Bin Scatter + Pair Plots
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="04f1-viz_narrative.html">
-       3.3.6. Better Plots
+       3.3.8. Better Plots
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="04f2-customizing_figs.html">
-       3.3.7. Customizing figures
+       3.3.9. Customizing figures
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="04f3-interactive_figs.html">
-       3.3.8. Interactive plots:
+       3.3.10. Interactive plots:
        <code class="docutils literal notranslate">
         <span class="pre">
          plotly
@@ -476,12 +486,12 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="04f4-exercises.html">
-       3.3.9. Exercises
+       3.3.11. Exercises
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="04h_Summary.html">
-       3.3.10. Chapter Summary
+       3.3.12. Chapter Summary
       </a>
      </li>
     </ul>
@@ -1009,8 +1019,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>Data can be logically stored in many ways. Let’s start by showing one dataset, and three ways it can be stored.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="a2d11ef3-07a2-4477-b15f-f6975974a331" name="abc8ffad-f55e-4134-8a45-baa77a92fcf0" type="radio">
-</input><label class="tabbed-label" for="a2d11ef3-07a2-4477-b15f-f6975974a331">
+<input checked="checked" id="334bde5c-67b3-47b1-88cf-fb3081a21db5" name="cc778b0e-9756-4de5-9ed9-8a4fd52e8adf" type="radio">
+</input><label class="tabbed-label" for="334bde5c-67b3-47b1-88cf-fb3081a21db5">
 “Long” Data</label><div class="tabbed-content docutils">
 <p>Here is a <strong>long dataset.</strong> The “key” or “index” is the <em><strong>combination</strong> of year and firm.</em> This is what I’d refer to as a “firm-year” dataset.</p>
 <table class="colwidths-auto table">
@@ -1065,8 +1075,8 @@ const thebe_selector_output = ".output, .cell_output"
 </tbody>
 </table>
 </div>
-<input id="d991dad1-2802-4982-a6cd-0a5ead59e260" name="abc8ffad-f55e-4134-8a45-baa77a92fcf0" type="radio">
-</input><label class="tabbed-label" for="d991dad1-2802-4982-a6cd-0a5ead59e260">
+<input id="0a455c24-30f8-4443-9e7e-23d27f7cce12" name="cc778b0e-9756-4de5-9ed9-8a4fd52e8adf" type="radio">
+</input><label class="tabbed-label" for="0a455c24-30f8-4443-9e7e-23d27f7cce12">
 Same data, but “Wide”</label><div class="tabbed-content docutils">
 <p>This is the exact same data, but stored as a <strong>wide dataset.</strong> Now, the “key” or “index” is <strong>just</strong> the <em>year</em>, and each variable is duplicated for each firm. So there is a Sales variable for GM, and a Sales variable for Ford.</p>
 <table class="colwidths-auto table">
@@ -1112,8 +1122,8 @@ Same data, but “Wide”</label><div class="tabbed-content docutils">
 <p>A similar case can occur for the row names/numbers. If there is one level of the row name, that’s the Index. If there are multiple levels, it is called a MultiIndex.</p>
 </div>
 </div>
-<input id="b2f047af-8cd2-4e63-97cf-891fde849c26" name="abc8ffad-f55e-4134-8a45-baa77a92fcf0" type="radio">
-</input><label class="tabbed-label" for="b2f047af-8cd2-4e63-97cf-891fde849c26">
+<input id="abbd2b41-de92-4b33-bcf9-65c90e7ccb6c" name="cc778b0e-9756-4de5-9ed9-8a4fd52e8adf" type="radio">
+</input><label class="tabbed-label" for="abbd2b41-de92-4b33-bcf9-65c90e7ccb6c">
 Same data, but differently “Wide”</label><div class="tabbed-content docutils">
 <p>Now, the “key” or “index” is just the <em>firm</em>, and each variable is duplicated for each year. So there is a Sales variable for 2000, and a Sales variable for 2001.</p>
 <table class="colwidths-auto table">
