@@ -1259,19 +1259,19 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">merge_type</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">on</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    This function could use case test. E.g.: multiple key vars, missing vars </span>
+<span class="sd">    </span>
+<span class="sd">    Feature request: This only works if the key vars are named the same in both datasets.  </span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">Feature</span> <span class="n">request</span><span class="p">:</span> <span class="n">This</span> <span class="n">only</span> <span class="n">works</span> <span class="k">if</span> <span class="n">the</span> <span class="n">key</span> <span class="nb">vars</span> <span class="n">are</span> <span class="n">named</span> <span class="n">the</span> <span class="n">same</span> <span class="ow">in</span> <span class="n">both</span> <span class="n">datasets</span><span class="o">.</span>  
-    <span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">    # if there are duplicates, dropping them will shrink the key vector</span>
-<span class="s1">    if len(df1[on]) &gt; len(df1[on].drop_duplicates()):</span>
-<span class="s1">        _l = &quot;many&quot;</span>
-<span class="s1">    else:</span>
-<span class="s1">        _l = &quot;one&quot;</span>
-<span class="s1">    if len(df2[on]) &gt; len(df2[on].drop_duplicates()):</span>
-<span class="s1">        _r = &quot;many&quot;</span>
-<span class="s1">    else:</span>
-<span class="s1">        _r = &quot;one&quot;</span>
-<span class="s1">    return &quot;</span><span class="si">{}</span><span class="s1">_to_</span><span class="si">{}</span><span class="s1">&quot;.format(_l,_r)</span>
+    <span class="c1"># if there are duplicates, dropping them will shrink the key vector</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="n">on</span><span class="p">])</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="n">on</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()):</span>
+        <span class="n">_l</span> <span class="o">=</span> <span class="s2">&quot;many&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_l</span> <span class="o">=</span> <span class="s2">&quot;one&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="n">on</span><span class="p">])</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="n">on</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()):</span>
+        <span class="n">_r</span> <span class="o">=</span> <span class="s2">&quot;many&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_r</span> <span class="o">=</span> <span class="s2">&quot;one&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_to_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">_l</span><span class="p">,</span><span class="n">_r</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
