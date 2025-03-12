@@ -965,18 +965,23 @@ const thebe_selector_output = ".output, .cell_output"
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-table-1-looks-like">
+   9.6.1. What “Table 1” looks like
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#step-1-get-the-factor-portfolio-returns">
-   9.6.1. Step 1: Get the factor portfolio returns.
+   9.6.2. Step 1: Get the factor portfolio returns.
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#step-2-get-your-signal-then-construct-portfolio-returns">
-   9.6.2. Step 2: Get your signal, then construct portfolio returns.
+   9.6.3. Step 2: Get your signal, then construct portfolio returns.
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#step-3-run-the-regressions">
-   9.6.3. Step 3: Run the regressions.
+   9.6.4. Step 3: Run the regressions.
   </a>
  </li>
 </ul>
@@ -1007,20 +1012,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Here is the <a class="reference external" href="https://github.com/velikov-mihail/AssayingAnomalies">repo</a> containing that project’s code (mostly in Matlab as of Spring 2025, but will be in Python soon).</p></li>
 <li><p>The paper describing that project, which you should read (its breezy), and what you should cite is: Novy-Marx, Robert and Velikov, Mihail, Assaying Anomalies (February 13, 2024). Available at SSRN: <a class="reference external" href="https://ssrn.com/abstract=4338007">https://ssrn.com/abstract=4338007</a> or <a class="reference external" href="http://dx.doi.org/10.2139/ssrn.4338007">http://dx.doi.org/10.2139/ssrn.4338007</a></p></li>
 </ul>
-<p>The other exciting resource this page is meant to tell you about is <code class="docutils literal notranslate"><span class="pre">openassetpricing</span></code>:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.openassetpricing.com/data/">https://www.openassetpricing.com/data/</a> is an incredible project for anyone interested in asset pricing. <strong>It makes it possible for any student to get close to the frontier of asset pricing faster than ever!</strong> This is because it makes it simple to get all the essential data you need. Within the site, there is lots of background info, and a companion paper.</p></li>
-<li><p>Downloading the data in python is easy with the <code class="docutils literal notranslate"><span class="pre">openassetpricing</span></code> package: here are <a class="reference external" href="https://github.com/mk0417/open-asset-pricing-download">the docs</a> (amazinnnng) and its <a class="reference external" href="https://github.com/mk0417/open-asset-pricing-download/tree/master/examples">examples</a> include</p>
-<ul>
-<li><p><a class="reference external" href="https://github.com/mk0417/open-asset-pricing-download/blob/master/examples/quick_tour.ipynb">quick tour</a></p></li>
-<li><p><a class="reference external" href="https://github.com/mk0417/open-asset-pricing-download/blob/master/examples/anomaly_plot.ipynb">plot one anomaly</a></p></li>
-<li><p><a class="reference external" href="https://github.com/mk0417/open-asset-pricing-download/blob/master/examples/ML_portfolio_example.ipynb">ML_portfolio_example</a>  (amazinnnng)</p></li>
-<li><p><a class="reference external" href="https://github.com/mk0417/open-asset-pricing-download/blob/master/examples/merge_portfolios_with_ff_factors.ipynb">merge_portfolios_with_ff_factors</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/OpenSourceAP/CrossSectionDemos">https://github.com/OpenSourceAP/CrossSectionDemos</a> (in R)</p></li>
-</ul>
 <p><img alt="image.png" src="../../_images/mish_abstract.png" /></p>
+<div class="section" id="what-table-1-looks-like">
+<h2><span class="section-number">9.6.1. </span>What “Table 1” looks like<a class="headerlink" href="#what-table-1-looks-like" title="Permalink to this headline">¶</a></h2>
 <p>In our code below, we are trying to replicate the structure of this table below, from Novy-Marx and Velikov.</p>
 <p><img alt="image.png" src="../../_images/mish_tab1.png" /></p>
 <div class="cell docutils container">
@@ -1041,8 +1035,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="step-1-get-the-factor-portfolio-returns">
-<h2><span class="section-number">9.6.1. </span>Step 1: Get the factor portfolio returns.<a class="headerlink" href="#step-1-get-the-factor-portfolio-returns" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.6.2. </span>Step 1: Get the factor portfolio returns.<a class="headerlink" href="#step-1-get-the-factor-portfolio-returns" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># I think this are in the opensourceAP dataset, and you should grab from that source instead, IMO</span>
@@ -1479,7 +1474,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="step-2-get-your-signal-then-construct-portfolio-returns">
-<h2><span class="section-number">9.6.2. </span>Step 2: Get your signal, then construct portfolio returns.<a class="headerlink" href="#step-2-get-your-signal-then-construct-portfolio-returns" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.6.3. </span>Step 2: Get your signal, then construct portfolio returns.<a class="headerlink" href="#step-2-get-your-signal-then-construct-portfolio-returns" title="Permalink to this headline">¶</a></h2>
 <p><strong>Note: I’m just picking easily available portfolios. Your work is here.</strong></p>
 <p>Upgrade: Make everything from here to the table a function. (So you can do decile or tercile splits, or change how splits are done, in one line of code.)</p>
 <div class="cell docutils container">
@@ -1507,7 +1502,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="step-3-run-the-regressions">
-<h2><span class="section-number">9.6.3. </span>Step 3: Run the regressions.<a class="headerlink" href="#step-3-run-the-regressions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.6.4. </span>Step 3: Run the regressions.<a class="headerlink" href="#step-3-run-the-regressions" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reg_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_factors</span><span class="p">,</span> <span class="n">df_portfolios</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
