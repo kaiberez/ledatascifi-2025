@@ -72,4 +72,4 @@ GitHub Copilot is excellent for code completions and fixes. Additionally, the ch
 
 ## References
 
-Chunks of the above are liberally pulled from Luek Stein, Paul Goldsmith-Pinkham, [](https://esmaozer.github.io/resources/all_in_one/all-in-one/)
+Chunks of the above are liberally pulled from Luek Stein, Paul Goldsmith-Pinkham, [Esma Özer](https://esmaozer.github.io/resources/all_in_one/all-in-one/).
